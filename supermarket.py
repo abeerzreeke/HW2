@@ -38,6 +38,8 @@ def main():
                         reviews = ["Propose new items please", "Submit a comment please", "Rate the supermarket out of 5 please "]
                         review = int(input("1.Propose new items\n2.Submit a comment\n3.Rate the supermarket out of 5\nEnter your choice : "))
                         print(reviews[review-1])
+                        clint_reveiw=input()
+                        clients_feedback(review,clint_reveiw)
                         break
                     else:
                         print(f"you total price is {total_price}")
@@ -53,6 +55,18 @@ def convertTextFileToDict(fileName: str) -> Dict:
 
     return productsDict
 
+
+def clients_feedback(review: int, client_review: str):
+    if review == 1:
+        with open("newItems.txt", "w") as file:
+            file.write(client_review)
+
+    elif review == 2:
+        with open("comments.txt", "w") as file:
+            file.write(client_review)
+    else:
+        with open("Rates.txt", "w") as file:
+            file.write(client_review)
 
 if __name__ == '__main__':
     main()
